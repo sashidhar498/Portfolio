@@ -43,11 +43,11 @@ img {
 
 /* Hero Section */
 header.hero {
-  background: url(../assets/sashi.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background: url(../assets/sashi.jpg) no-repeat left center fixed;
+  -webkit-background-size: auto 100%;
+  -moz-background-size: auto 100%;
+  -o-background-size: auto 100%;
+  background-size: auto 100%;
   color: #fff;
   padding-bottom: 80px;
 }
@@ -160,7 +160,7 @@ h1.heading.pink:after {
 .client-box {
   background-color: #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.03);
-  padding: 3.5em 2em;
+  padding: 3em 1em;
   border-radius: 5px;
   border: 1px solid #eee;
   text-align: center;
