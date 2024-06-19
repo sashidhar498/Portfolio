@@ -42,14 +42,17 @@ img {
 }
 
 /* Hero Section */
-header.hero {
+.header.hero {
   background: url(../assets/sashi.jpg) no-repeat left center fixed;
-  -webkit-background-size: auto 100%;
-  -moz-background-size: auto 100%;
-  -o-background-size: auto 100%;
-  background-size: auto 100%;
+  background-size: cover;
   color: #fff;
   padding-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+  .header.hero {
+    background-position: center;
+  }
 }
 
 header.hero .hero-text {
