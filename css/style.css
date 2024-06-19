@@ -52,7 +52,7 @@ color: #fff;
 padding-bottom: 80px;
 }
 
-@media (max-width: 768px) {
+@media () {
   .header.hero {
     background-position: center;
   }
