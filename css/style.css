@@ -49,6 +49,11 @@ color: #fff;
 padding-bottom: 80px;
 }
 
+@media (max-width: 768px) {
+  .header.hero {
+    background-position: center;
+  }
+}
 
 header.hero .hero-text {
   margin-top: 20%;
