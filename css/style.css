@@ -52,8 +52,9 @@ padding-bottom: 80px;
 @media only screen and (orientation:portrait)
 {
  header.hero {
-  background-size:50%;
-  background-color:black;
+  background: url(../assets/sashi.jpg) no-repeat left top fixed;
+  background-size:70%;
+  color: #fff;
  }
 }
 
