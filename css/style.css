@@ -52,7 +52,7 @@ padding-bottom: 80px;
 @media only screen and (orientation:portrait)
 {
  header.hero {
-  background-size:100px;
+  background-size:10px;
   background-color:black;
  }
 }
