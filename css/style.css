@@ -52,11 +52,6 @@ color: #fff;
 padding-bottom: 80px;
 }
 
-@media () {
-  .header.hero {
-    background-position: center;
-  }
-}
 
 header.hero .hero-text {
   margin-top: 20%;
