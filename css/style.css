@@ -51,9 +51,7 @@ padding-bottom: 80px;
 
 @media only screen and (orientation:portrait)
 {
- #wrapper { display:none; }
- #warning-message { display:block; color: white;}
- html{
+ header.hero {
   background-size:100px;
   background-color:black;
  }
