@@ -44,9 +44,6 @@ img {
 /* Hero Section */
 header.hero {
 background: url(../assets/sashi.jpg) no-repeat left center fixed;
--webkit-background-size: auto 100%;
--moz-background-size: auto 100%;
--o-background-size: auto 100%;
 background-size: cover;
 color: #fff;
 padding-bottom: 80px;
