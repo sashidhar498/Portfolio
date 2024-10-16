@@ -275,6 +275,7 @@
       <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
       <script src="js/jquery.counterup.min.js"></script>
       <script>
+      document.addEventListener('DOMContentLoaded', function () {
       // Counterup
       $('.counter').counterUp({
         time: 1000
@@ -284,6 +285,7 @@
       $('#menu-toggle').click(function(){
         $(this).toggleClass('open'),
         $('.main-nav').toggleClass('show-it');
+      })
       })
       </script>
 
