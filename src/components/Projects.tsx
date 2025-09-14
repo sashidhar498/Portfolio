@@ -176,17 +176,22 @@ const Projects = () => {
         <div className="flex gap-8">
           {/* Projects Grid */}
           <div className={`transition-all duration-500 ${selectedProject ? 'w-1/2' : 'w-full'}`}>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className={`grid gap-6 transition-all duration-500 ${selectedProject ? 'md:grid-cols-1' : 'md:grid-cols-2'}`}>
               {projects.map((project, index) => (
                 <Card 
                   key={index} 
-                  className={`card-hover overflow-hidden cursor-pointer transition-all duration-300 ${
+                  className={`card-hover overflow-hidden cursor-pointer transition-all duration-300 relative ${
                     project.featured ? 'ring-2 ring-primary/20' : ''
                   } ${
                     selectedProject?.title === project.title ? 'ring-4 ring-blue-500 shadow-lg scale-[1.02]' : 'hover:shadow-md'
                   }`}
                   onClick={() => handleProjectClick(project)}
                 >
+                  {/* Click Me Text */}
+                  <div className="absolute top-3 right-3 text-xs text-blue-500 font-medium bg-blue-50 dark:bg-blue-950 px-2 py-1 rounded-md border border-blue-200 dark:border-blue-800 opacity-70 hover:opacity-100 transition-opacity pointer-events-none">
+                    Click me
+                  </div>
+                  
                   <div className="p-6">
                     <div className="text-6xl mb-4 text-center">{project.image}</div>
                     
@@ -246,20 +251,20 @@ const Projects = () => {
           {/* GitHub Repository Browser */}
           {selectedProject && (
             <div className="w-1/2 transition-all duration-500 animate-in slide-in-from-right">
-              <div className="bg-card rounded-lg shadow-2xl border overflow-hidden h-[600px] flex flex-col">
+              <div className="bg-card rounded-lg shadow-2xl border overflow-hidden h-[600px] flex flex-col sticky top-20">
                 {/* Browser Header */}
-                <div className="bg-muted/50 border-b p-4 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="flex gap-2">
+                <div className="bg-muted/50 border-b p-4 flex items-center justify-between min-h-[60px]">
+                  <div className="flex items-center gap-3 flex-1 min-w-0">
+                    <div className="flex gap-2 flex-shrink-0">
                       <div className="w-3 h-3 rounded-full bg-red-500"></div>
                       <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                       <div className="w-3 h-3 rounded-full bg-green-500"></div>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground bg-background px-3 py-1 rounded flex-1 max-w-md">
-                      <Github className="h-4 w-4" />
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground bg-background px-3 py-1 rounded flex-1 max-w-md min-w-0">
+                      <Github className="h-4 w-4 flex-shrink-0" />
                       <span className="truncate">{selectedProject.github}</span>
                       <ExternalLink 
-                        className="h-4 w-4 cursor-pointer hover:text-primary ml-auto" 
+                        className="h-4 w-4 cursor-pointer hover:text-primary ml-auto flex-shrink-0" 
                         onClick={() => window.open(selectedProject.github, '_blank')}
                       />
                     </div>
@@ -268,7 +273,7 @@ const Projects = () => {
                     size="sm" 
                     variant="ghost" 
                     onClick={closeBrowser}
-                    className="hover:bg-destructive/20"
+                    className="hover:bg-destructive/20 p-2 flex-shrink-0 ml-2"
                   >
                     <X className="h-4 w-4" />
                   </Button>
