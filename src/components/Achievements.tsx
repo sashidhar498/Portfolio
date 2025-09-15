@@ -151,7 +151,7 @@ const Achievements = () => {
   };
 
   return (
-    <section id="achievements" className="py-20 px-6 bg-secondary/10">
+    <section id="achievements" className="py-20 px-1 md:px-6 bg-secondary/10">
       <div className="container mx-auto max-w-6xl">
         <h2 className="text-4xl font-bold text-center mb-4">
           <span className="text-gradient">Achievements & Certifications</span>
@@ -161,71 +161,68 @@ const Achievements = () => {
         </p>
         
         {/* Key Achievements Section with Browser */}
-        <div className="flex gap-8 mb-20">
-          {/* Achievements */}
-          <div className={`transition-all duration-500 ${selectedAchievement ? 'w-1/2' : 'w-full'}`}>
-            <h3 className="text-2xl font-semibold text-center mb-12">Key Achievements</h3>
-            <div className={`grid gap-6 transition-all duration-500 ${selectedAchievement ? 'md:grid-cols-1' : 'md:grid-cols-3'}`}>
-              {achievements.map((achievement, index) => (
-                <Card 
-                  key={index} 
-                  className={`card-hover overflow-hidden cursor-pointer transition-all duration-300 relative ${
-                    selectedAchievement?.title === achievement.title ? 'ring-4 ring-blue-500 shadow-lg scale-[1.02]' : 'hover:shadow-md'
-                  }`}
-                  onClick={() => handleAchievementClick(achievement)}
-                >
-                  {/* Click Me Text */}
-                  <div className="absolute top-3 right-3 text-xs text-blue-500 font-medium bg-blue-50 dark:bg-blue-950 px-2 py-1 rounded-md border border-blue-200 dark:border-blue-800 opacity-70 hover:opacity-100 transition-opacity pointer-events-none">
-                    Click me
-                  </div>
-                  
-                  <div className="p-6">
-                    <div className="text-primary mb-4 flex justify-center text-4xl">
-                      {achievement.icon}
-                    </div>
-                    
-                    <h3 className="text-xl font-semibold mb-3 text-center">{achievement.title}</h3>
-                    <p className="text-muted-foreground mb-4 text-sm leading-relaxed">{achievement.description}</p>
-                    
-                    {/* Key Info Badges */}
-                    <div className="flex flex-wrap gap-2 mb-4 justify-center">
-                      {achievement.prize && (
-                        <Badge variant="default" className="text-xs">
-                          {achievement.prize}
-                        </Badge>
-                      )}
-                      {achievement.organization && (
-                        <Badge variant="secondary" className="text-xs">
-                          {achievement.organization}
-                        </Badge>
-                      )}
-                    </div>
-
-                    {/* Action Button */}
-                    <div className="flex">
-                      <Button 
-                        size="sm" 
-                        variant="outline" 
-                        className="flex-1"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          window.open(achievement.link, '_blank');
-                        }}
-                      >
-                        <LinkIcon className="mr-2 h-4 w-4" />
-                        Link
-                      </Button>
-                    </div>
-                  </div>
-                </Card>
-              ))}
+        <div className="flex flex-col lg:flex-row gap-8 mb-20">
+  {/* Achievements */}
+  <div className={`transition-all duration-500 ${selectedAchievement ? 'lg:w-1/2 w-full' : 'w-full'}`}>
+    <h3 className="text-2xl font-semibold text-center mb-12">Key Achievements</h3>
+    <div className={`grid gap-6 transition-all duration-500 grid-cols-1 ${selectedAchievement ? 'lg:grid-cols-1' : 'lg:grid-cols-3'}`}>
+      {achievements.map((achievement, index) => (
+        <div key={index}>
+          <Card 
+            className={`card-hover overflow-hidden cursor-pointer transition-all duration-300 relative ${
+              selectedAchievement?.title === achievement.title ? 'ring-4 ring-blue-500 shadow-lg scale-[1.02]' : 'hover:shadow-md'
+            }`}
+            onClick={() => handleAchievementClick(achievement)}
+          >
+            {/* Click Me Text */}
+            <div className="absolute top-3 right-3 text-xs text-blue-500 font-medium bg-blue-50 dark:bg-blue-950 px-2 py-1 rounded-md border border-blue-200 dark:border-blue-800 opacity-70 hover:opacity-100 transition-opacity pointer-events-none">
+              Click me
             </div>
-          </div>
+            
+            <div className="p-6">
+              <div className="text-primary mb-4 flex justify-center text-4xl">
+                {achievement.icon}
+              </div>
+              
+              <h3 className="text-xl font-semibold mb-3 text-center">{achievement.title}</h3>
+              <p className="text-muted-foreground mb-4 text-sm leading-relaxed">{achievement.description}</p>
+              
+              {/* Key Info Badges */}
+              <div className="flex flex-wrap gap-2 mb-4 justify-center">
+                {achievement.prize && (
+                  <Badge variant="default" className="text-xs">
+                    {achievement.prize}
+                  </Badge>
+                )}
+                {achievement.organization && (
+                  <Badge variant="secondary" className="text-xs">
+                    {achievement.organization}
+                  </Badge>
+                )}
+              </div>
 
-          {/* Achievement Details Browser */}
-          {selectedAchievement && (
-            <div className="w-1/2 transition-all duration-500 animate-in slide-in-from-right">
-              <div className="bg-card rounded-lg shadow-2xl border overflow-hidden h-[600px] flex flex-col sticky top-20">
+              {/* Action Button */}
+              <div className="flex">
+                <Button 
+                  size="sm" 
+                  variant="outline" 
+                  className="flex-1"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    window.open(achievement.link, '_blank');
+                  }}
+                >
+                  <LinkIcon className="mr-2 h-4 w-4" />
+                  Link
+                </Button>
+              </div>
+            </div>
+          </Card>
+
+          {/* Achievement Details Browser - appears below card on mobile only */}
+          {selectedAchievement?.title === achievement.title && (
+            <div className="mt-6 lg:hidden">
+              <div className="bg-card rounded-lg shadow-2xl border overflow-hidden h-[600px] flex flex-col">
                 {/* Browser Header */}
                 <div className="bg-muted/50 border-b p-4 flex items-center justify-between min-h-[60px]">
                   <div className="flex items-center gap-3 flex-1 min-w-0">
@@ -234,13 +231,8 @@ const Achievements = () => {
                       <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                       <div className="w-3 h-3 rounded-full bg-green-500"></div>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground bg-background px-3 py-1 rounded flex-1 max-w-md min-w-0">
-                      <FileText className="h-4 w-4 flex-shrink-0" />
-                      <span className="truncate">Achievement Details</span>
-                      <ExternalLink 
-                        className="h-4 w-4 cursor-pointer hover:text-primary ml-auto flex-shrink-0" 
-                        onClick={() => window.open(selectedAchievement.link, '_blank')}
-                      />
+                    <div className="text-sm font-medium text-center flex-1">
+                      {selectedAchievement.title}
                     </div>
                   </div>
                   <Button 
@@ -341,6 +333,129 @@ const Achievements = () => {
             </div>
           )}
         </div>
+      ))}
+    </div>
+  </div>
+
+  {/* Achievement Details Browser for Desktop - side by side */}
+  {selectedAchievement && (
+    <div className="hidden lg:block lg:w-1/2 transition-all duration-500 animate-in slide-in-from-right">
+      <div className="bg-card rounded-lg shadow-2xl border overflow-hidden h-[600px] flex flex-col sticky top-20">
+        {/* Browser Header */}
+        <div className="bg-muted/50 border-b p-4 flex items-center justify-between min-h-[60px]">
+          <div className="flex items-center gap-3 flex-1 min-w-0">
+            <div className="flex gap-2 flex-shrink-0">
+              <div className="w-3 h-3 rounded-full bg-red-500"></div>
+              <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground bg-background px-3 py-1 rounded flex-1 max-w-md min-w-0">
+              <FileText className="h-4 w-4 flex-shrink-0" />
+              <span className="truncate">Achievement Details</span>
+              <ExternalLink 
+                className="h-4 w-4 cursor-pointer hover:text-primary ml-auto flex-shrink-0" 
+                onClick={() => window.open(selectedAchievement.link, '_blank')}
+              />
+            </div>
+          </div>
+          <Button 
+            size="sm" 
+            variant="ghost" 
+            onClick={closeBrowser}
+            className="hover:bg-destructive/20 p-2 flex-shrink-0 ml-2"
+          >
+            <X className="h-4 w-4" />
+          </Button>
+        </div>
+
+        {/* Achievement Content */}
+        <div className="flex-1 overflow-y-auto">
+          <div className="p-6 space-y-6">
+            {/* Achievement Header */}
+            <div className="text-center">
+              <div className="text-primary mb-4 flex justify-center text-6xl">
+                {selectedAchievement.icon}
+              </div>
+              <h3 className="text-2xl font-bold mb-2">{selectedAchievement.title}</h3>
+              <p className="text-muted-foreground mb-4">{selectedAchievement.description}</p>
+            </div>
+
+            {/* Achievement Stats */}
+            <div className="grid grid-cols-1 gap-4">
+              <div className="flex items-center gap-3 p-3 bg-muted/30 rounded-lg">
+                <Building className="h-5 w-5 text-blue-500" />
+                <div>
+                  <div className="font-medium">{selectedAchievement.organization}</div>
+                  <div className="text-sm text-muted-foreground">Organization</div>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-3 p-3 bg-muted/30 rounded-lg">
+                <Star className="h-5 w-5 text-yellow-500" />
+                <div>
+                  <div className="font-medium">{selectedAchievement.prize}</div>
+                  <div className="text-sm text-muted-foreground">Achievement</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Additional Details */}
+            <div>
+              <h4 className="font-semibold mb-3">Event Details</h4>
+              <div className="space-y-3 text-sm">
+                {selectedAchievement.date && (
+                  <div className="flex items-center gap-2">
+                    <Calendar className="h-4 w-4 text-muted-foreground" />
+                    <span>Date: {formatDate(selectedAchievement.date)}</span>
+                  </div>
+                )}
+                {selectedAchievement.location && (
+                  <div className="flex items-center gap-2">
+                    <Building className="h-4 w-4 text-muted-foreground" />
+                    <span>Location: {selectedAchievement.location}</span>
+                  </div>
+                )}
+                {selectedAchievement.participants && (
+                  <div className="flex items-center gap-2">
+                    <Eye className="h-4 w-4 text-muted-foreground" />
+                    <span>Participants: {selectedAchievement.participants}</span>
+                  </div>
+                )}
+                {selectedAchievement.category && (
+                  <div className="flex items-center gap-2">
+                    <Trophy className="h-4 w-4 text-muted-foreground" />
+                    <span>Category: {selectedAchievement.category}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Category Badge */}
+            {selectedAchievement.category && (
+              <div>
+                <h4 className="font-semibold mb-3">Category</h4>
+                <Badge variant="secondary" className="text-sm px-3 py-1">
+                  {selectedAchievement.category}
+                </Badge>
+              </div>
+            )}
+
+            {/* Action Button */}
+            <div className="space-y-3 pt-4 border-t">
+              <Button 
+                className="w-full"
+                onClick={() => window.open(selectedAchievement.link, '_blank')}
+              >
+                <ExternalLink className="mr-2 h-4 w-4" />
+                Visit Website
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )}
+</div>
 
         {/* Professional Certifications Section - Completely Separate */}
         <div className="w-full">

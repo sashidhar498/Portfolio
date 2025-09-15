@@ -6,7 +6,7 @@ import { Github, Linkedin, Mail, MessageSquare } from "lucide-react";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-20 px-6 bg-secondary/10">
+    <section id="contact" className="py-20 px-1 md:px-6 bg-secondary/10">
       <div className="container mx-auto max-w-4xl">
         <h2 className="text-4xl font-bold text-center mb-8">
           <span className="text-gradient">Let's Build Something Together</span>
