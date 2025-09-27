@@ -44,7 +44,7 @@ const Hero = () => {
             </Button>
           </a>
           <a
-        href="src\assets\Sabbu_Sashidhar.pdf"
+        href="Sabbu_Sashidhar.pdf"
         download="Sabbu_Sashidhar_Resume.pdf"
         target="_blank"
         rel="noopener noreferrer"

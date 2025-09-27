@@ -123,7 +123,7 @@ const Achievements = () => {
       title: "Innovation Oasis Runner-Up",
       description: "Recognized for exceptional innovation and project excellence in one of India's premier technology competitions, showcasing cutting-edge solutions and technical prowess.",
       icon: <Medal className="h-6 w-6" />,
-      link: "src/assets/IIIT nagpur-2nd price.pdf",
+      link: "IIIT nagpur-2nd price.pdf",
       date: "March 2023",
       organization: "IIIT Nagpur",
       category: "Technical Competition",
