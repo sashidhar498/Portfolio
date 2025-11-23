@@ -12,3 +12,4 @@ Allow: /
 
 User-agent: *
 Allow: /
+Sitemap: https://sashidhar498.github.io/sitemap.xml
